@@ -3,6 +3,8 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 
+# Define the get_data() function to fetch the values from your Google Spreadsheet.
+
 def get_data():
     # Authenticate with Google Sheets API
     gc = gspread.service_account(filename='./service-account.json')
@@ -20,6 +22,8 @@ def get_data():
     df = pd.DataFrame(data[1:], columns=data[0])
 
     return df
+
+# Create the Streamlit app and define the main code to display the line chart
 
 def main():
     # Get data from the Google Spreadsheet
