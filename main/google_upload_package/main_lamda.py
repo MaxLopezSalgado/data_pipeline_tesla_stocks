@@ -1,7 +1,7 @@
 import gspread
 
 def save_data(event, context):
-    gc = gspread.service_account(filename="./service_account.json")
+    gc = gspread.service_account(filename="./service-account.json")
 
     wks = gc.open("<data_pipeline_tesla_stocks>").sheet1
 
