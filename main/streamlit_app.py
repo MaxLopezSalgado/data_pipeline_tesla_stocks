@@ -35,10 +35,17 @@ def main():
 
     # Display the line chart
     st.subheader('Line Chart')
-    plt.plot(df['date'], df['close'])
-    plt.xlabel('Date')
-    plt.ylabel('Close Price')
-    st.pyplot()
+   
+   # Create the figure and axes objects
+    fig, ax = plt.subplots()
+
+    # Plot the data using the axes object (ax)
+    ax.plot(df['date'], df['close'])
+    ax.set_xlabel('Date')
+    ax.set_ylabel('Close Price')
+
+    # Pass the figure (fig) to st.pyplot()
+    st.pyplot(fig)
 
 if __name__ == '__main__':
     main()
