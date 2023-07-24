@@ -2,12 +2,42 @@ import gspread
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
+import json
+import os
 
 # Define the get_data() function to fetch the values from your Google Spreadsheet.
 
+# def get_data():
+#     # Authenticate with Google Sheets API
+#     gc = gspread.service_account(filename='./service-account.json')
+
+#     # Open the spreadsheet
+#     spreadsheet = gc.open('data_pipeline_tesla_stocks')
+
+#     # Select the worksheet
+#     worksheet = spreadsheet.sheet1
+
+#     # Get all values from the worksheet as a list of lists
+#     data = worksheet.get_all_values()
+
+#     # Create a pandas DataFrame from the data
+#     df = pd.DataFrame(data[1:], columns=data[0])
+
+#     return df
+
+
+# Define the get_data() function to fetch the values from your Google Spreadsheet.
+
+
 def get_data():
-    # Authenticate with Google Sheets API
-    gc = gspread.service_account(filename='./service-account.json')
+    # Get the JSON content from the environment variable
+    json_str = os.environ.get("GOOGLE_SERVICE_ACCOUNT")
+
+    # Load the JSON content as a dictionary
+    service_account_info = json.loads(json_str)
+
+    # Authenticate with Google Sheets API using the loaded service account info
+    gc = gspread.service_account_from_dict(service_account_info)
 
     # Open the spreadsheet
     spreadsheet = gc.open('data_pipeline_tesla_stocks')
@@ -22,6 +52,7 @@ def get_data():
     df = pd.DataFrame(data[1:], columns=data[0])
 
     return df
+
 
 # Create the Streamlit app and define the main code to display the line chart
 
