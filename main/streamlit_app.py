@@ -11,16 +11,9 @@ from datetime import datetime
 
 # Define the get_data() function to fetch the values from your Google Spreadsheet.
 
-
 def get_data():
-    # Get the JSON content from the environment variable
-    json_str = os.environ.get("GOOGLE_SERVICE_ACCOUNT")
-
-    # Load the JSON content as a dictionary
-    service_account_info = json.loads(json_str)
-
-    # Authenticate with Google Sheets API using the loaded service account info
-    gc = gspread.service_account_from_dict(service_account_info)
+    # Authenticate with Google Sheets API
+    gc = gspread.service_account(filename='./service-account.json')
 
     # Open the spreadsheet
     spreadsheet = gc.open('data_pipeline_tesla_stocks')
@@ -44,7 +37,7 @@ def main():
     df = get_data()
 
     # Convert the 'date' column to a datetime format
-    df['date'] = pd.to_datetime(df['date'], format='%m/%d/%Y')
+    df['date'] = pd.to_datetime(df['date'], format='%Y/%m/%d')
 
     # Set up Streamlit
     st.title('Data Visualization with Streamlit')
