@@ -6,6 +6,7 @@
 *.csv
 *.zip  
 *.db
-*.txt
+token.txt
 *.json
 *.env
+
