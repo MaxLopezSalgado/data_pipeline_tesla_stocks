@@ -2,19 +2,21 @@ import gspread
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
-import json
-import os
-import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 import matplotlib.ticker as ticker
 from datetime import datetime
+import json
+
+# Access the Google service account credentials from secrets
+google_client_email = st.secrets["google_auth"]["client_email"]
+google_private_key = json.loads(st.secrets["google_auth"]["private_key"])
 
 # Define the get_data() function to fetch the values from your Google Spreadsheet.
 
 def get_data():
     # Authenticate with Google Sheets API
-    # gc = gspread.service_account(filename='./service-account.json') ----> Try with "scopes" if st.secrets dont work
-    gc = gspread.service_account(st.write("google_auth:", st.secrets["google_auth"]))
+    gc = gspread.service_account(google_client_email=google_client_email,
+                                 google_private_key=google_private_key)
 
     # Open the spreadsheet
     spreadsheet = gc.open('data_pipeline_tesla_stocks')
@@ -29,8 +31,6 @@ def get_data():
     df = pd.DataFrame(data[1:], columns=data[0])
 
     return df
-
-
 
 
 # Create the Streamlit app and define the main code to display the line chart
@@ -74,4 +74,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
