@@ -13,8 +13,8 @@ from datetime import datetime
 
 def get_data():
     # Authenticate with Google Sheets API
-    gc = gspread.service_account(filename='./service-account.json')
-    # gc = gspread.service_account(st.write("stocks_key:", st.secrets["stocks_key"]))
+    # gc = gspread.service_account(filename='./service-account.json') ----> Try with "scopes" if st.secrets dont work
+    gc = gspread.service_account(st.write("google_auth:", st.secrets["google_auth"]))
 
     # Open the spreadsheet
     spreadsheet = gc.open('data_pipeline_tesla_stocks')
