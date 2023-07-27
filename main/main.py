@@ -3,11 +3,6 @@ import json
 import os
 import streamlit as lt
 
-from dotenv import load_dotenv
-
-load_dotenv()
-api_key = os.getenv("stocks_key")
-
 def get_data():
     # Disable SSL certificate verification (Not recommended for production)
     http = urllib3.PoolManager(cert_reqs='CERT_NONE')
