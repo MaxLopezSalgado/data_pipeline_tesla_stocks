@@ -2,4 +2,3 @@ gspread
 pandas
 matplotlib
 streamlit
-dotenv
