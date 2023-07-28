@@ -8,8 +8,8 @@ from datetime import datetime
 import json
 
 # Access the Google service account credentials from secrets
-google_client_email = st.secrets["client_email"]
-google_private_key = st.secrets["private_key"]
+google_client_email = json.loads(st.secrets["client_email"])
+google_private_key = json.loads(st.secrets["private_key"])
 
 # Define the get_data() function to fetch the values from your Google Spreadsheet.
 def get_data():
