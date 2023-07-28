@@ -9,14 +9,12 @@ import json
 
 # Access the Google service account credentials from secrets
 google_client_email = st.secrets["google_auth"]["client_email"]
-google_private_key = json.loads(st.secrets["google_auth"]["private_key"])
+google_private_key = st.secrets["google_auth"]["private_key"]
 
 # Define the get_data() function to fetch the values from your Google Spreadsheet.
-
 def get_data():
     # Authenticate with Google Sheets API
-    gc = gspread.service_account(google_client_email=google_client_email,
-                                 google_private_key=google_private_key)
+    gc = gspread.service_account(client_email=google_client_email, private_key=google_private_key)
 
     # Open the spreadsheet
     spreadsheet = gc.open('data_pipeline_tesla_stocks')
