@@ -1,8 +1,8 @@
-## Data Pipelines Project
+## Automated Data Pipelines Project
 
 ### Project Overview
 
-In this project, we will build a data pipeline to gather and analyze stock price data for Tesla from a free Stock API. The pipeline will include steps to retrieve data, store it in a Google Spreadsheet, and create an interactive data visualization using Streamlit. This hands-on project will cover aspects of data retrieval, processing, storage, and presentation.
+In this project, I built a data pipeline to gather and analyze stock price data for Tesla from a free Stock API. The pipeline will include steps to retrieve data, store it in a Google Spreadsheet, and create an interactive data visualization using Streamlit. This hands-on project will cover aspects of data retrieval, processing, storage, and presentation.
 
 ### Steps to Completion
 
@@ -26,5 +26,3 @@ In this project, we will build a data pipeline to gather and analyze stock price
 - Optional: Experience with deploying applications on platforms like Heroku or Streamlit Cloud.
 
 By completing this project, I gained valuable experience in data pipeline development, data retrieval, storage, and visualization. The project also enhanced my understanding of cloud services and serverless computing.
-
-Feel free to customize and adapt the content to suit your repository's `README.md` file.
